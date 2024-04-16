@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -125,6 +126,20 @@ namespace DroneIMMO
 
             }
             maxIndexReach = 0;
+        }
+
+        internal void GetRandomActivePlayer(out int integerIndex)
+        {
+            for (int i = UnityEngine.Random.Range(0,128*128) - 1; i >= 0; i--)
+            {
+                if (GetNativeArray()[i] != 0)
+                {
+                    integerIndex = i;
+                    return;
+                }
+
+            }
+            integerIndex = 0;
         }
     }
 
