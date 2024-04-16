@@ -1,0 +1,19 @@
+{
+    "name": "be.eloistree.immoshielddrone",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Burst",
+        "Unity.Burst.CodeGen",
+        "be.eloistree.generaltoolbox",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
