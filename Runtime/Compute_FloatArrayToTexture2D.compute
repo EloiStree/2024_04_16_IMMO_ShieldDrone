@@ -1,0 +1,54 @@
+
+// Compute shader to convert a float array to a Texture2D
+
+#pragma kernel ConvertToTexture
+
+RWTexture2D<float4> resultTexture; // Output texture
+
+// Input float array
+StructuredBuffer<float> inputArray;
+
+int widthTexture2D;
+int maxFloatLenght;
+
+[numthreads(8, 8, 1)]
+void ConvertToTexture(uint3 id : SV_DispatchThreadID)
+{
+    // Calculate the index in the input array based on the thread ID
+    uint index = id.x + id.y * widthTexture2D;
+
+    // Check if the index is within the bounds of the input array
+    if (index < maxFloatLenght)
+    {
+        // Read the float value from the input array
+        float value = inputArray[index];
+        float4 color;
+        int modulo = index % 9;
+        if (modulo == 0)
+        {
+            if (value > 0)
+                value = 1;
+            else
+                value = 0;
+            color = float4(value, 0, 0, 1.0);
+        }
+        else if (modulo == 1 || modulo == 2 || modulo == 3)
+        {
+            value = value / 65.0;
+            color = float4(value, value, value, 1.0f);
+        }
+        else if (modulo == 4 || modulo == 5 || modulo == 6 || modulo == 7)
+        {
+            value = (value + 1.0) * 0.5;
+            color = float4(value, value, value, 1.0);
+        }
+        else 
+        {
+            value = value / 65000.0;
+            color = float4(value, value, value, 1.0);
+        }
+
+        // Write the color to the output texture
+        resultTexture[id.xy] = color;
+    }
+}

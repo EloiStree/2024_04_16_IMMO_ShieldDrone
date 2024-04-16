@@ -1,0 +1,52 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+
+struct ShieldDroneAsUShort
+{
+    uint m_gameState; 
+    uint m_quadrantIndex;
+    uint m_quadrantRightX;
+    uint m_quadrantHeightY;
+    uint m_quadrantDepthZ;
+    int m_angleLeftRight360; 
+    int m_percentDronePitch; 
+    int m_percentDroneRoll; 
+    uint m_percentShieldState;
+};
+
+
+RWStructuredBuffer<ShieldDroneAsUShort> shieldDroneBuffer;
+RWByteAddressBuffer  byteArrayBuffer;
+
+
+uint upPerDispatch=10;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+
+    // Get the index of the current thread
+    uint index = id.x + (id.y * 8);
+
+    // Get the current ShieldDroneAsUShort
+    ShieldDroneAsUShort shieldDrone = shieldDroneBuffer[index];
+
+    // Get the current byte array
+    uint byteIndex = index * 16;
+    uint byteValue = 0;
+    for (uint i = 0; i < 16; i++)
+    {
+        byteValue = byteArrayBuffer.Load(byteIndex + i);
+        
+    
+    }
+        shieldDrone.m_quadrantIndex +=upPerDispatch;
+        shieldDrone.m_quadrantRightX +=upPerDispatch;
+        shieldDrone.m_quadrantHeightY +=upPerDispatch;
+        shieldDrone.m_quadrantDepthZ +=upPerDispatch;
+        shieldDrone.m_angleLeftRight360 +=upPerDispatch;
+
+    // Write the new ShieldDroneAsUShort back to the buffer
+    shieldDroneBuffer[index] = shieldDrone;
+}

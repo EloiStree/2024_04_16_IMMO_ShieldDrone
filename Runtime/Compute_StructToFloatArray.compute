@@ -1,0 +1,37 @@
+#pragma kernel CopyKernel
+
+
+struct ShieldDroneAs9Float
+{
+    float m_gameSate;
+    float m_vx;
+    float m_vy;
+    float m_vz;
+    float m_qx;
+    float m_qy;
+    float m_qz;
+    float m_qw;
+    float m_shield;
+}; // Add a semicolon at the end of the struct definition
+
+RWStructuredBuffer<ShieldDroneAs9Float> droneStructArray;
+RWStructuredBuffer<float> droneFloatArray;
+
+[numthreads(64, 1, 1)]
+void CopyKernel(uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x + id.y * 128;
+    uint offset= index * 9;
+    droneFloatArray[offset + 0] = droneStructArray[index].m_gameSate;
+    droneFloatArray[offset + 1] = droneStructArray[index].m_vx;
+    droneFloatArray[offset + 2] = droneStructArray[index].m_vy;
+    droneFloatArray[offset + 3] = droneStructArray[index].m_vz;
+    droneFloatArray[offset + 4] = droneStructArray[index].m_qx;
+    droneFloatArray[offset + 5] = droneStructArray[index].m_qy;
+    droneFloatArray[offset + 6] = droneStructArray[index].m_qz;
+    droneFloatArray[offset + 7] = droneStructArray[index].m_qw;
+    droneFloatArray[offset + 8] = droneStructArray[index].m_shield;
+}
+
+
+
