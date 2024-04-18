@@ -10,7 +10,8 @@ namespace DroneIMMO
 
 
 
-    public  class StaticNativeArrayMono_Generic16K<T>: MonoBehaviour where T : struct
+    public  class StaticNativeArrayMono_Generic16K<T>: 
+        MonoBehaviour where T : struct
     {
         public static Dictionary<string, NativeArray<T>> m_globalNativeArray = new Dictionary<string, NativeArray<T>>();
         public static int ARRAY_MAX_SIZE = 128 * 128;
