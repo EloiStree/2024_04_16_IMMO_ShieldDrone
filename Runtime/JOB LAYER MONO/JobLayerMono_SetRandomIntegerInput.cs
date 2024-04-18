@@ -8,10 +8,11 @@ using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
+using Eloi.WatchAndDate;
 public class JobLayerMono_SetRandomIntegerInput : MonoBehaviour
 {
 
-    public WatchAndDateTimeResult m_takenTime;
+    public WatchAndDateTimeActionResult m_takenTime;
     public SNAM16K_IntegerPlayerIndexClaim m_indexClaim;
     public SNAM16K_IntegerUserValue m_userValue;
     public SNAM16K_UpdateRandomSeed m_seeds;

@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Unity.Collections;
 using UnityEngine;
-
+using Eloi.WatchAndDate;
 public partial class DummyTestStructIntegerToBytes : MonoBehaviour
 {
 
@@ -79,10 +79,10 @@ public partial class DummyTestStructIntegerToBytes : MonoBehaviour
 
     }
 
-    public WatchAndDateTimeResult m_nativeToFloatBytes;
-    public WatchAndDateTimeResult m_floatToBytes;
-    public WatchAndDateTimeResult m_bytesToUdpPack;
-    public WatchAndDateTimeResult m_byteToFloat;
+    public WatchAndDateTimeActionResult m_nativeToFloatBytes;
+    public WatchAndDateTimeActionResult m_floatToBytes;
+    public WatchAndDateTimeActionResult m_bytesToUdpPack;
+    public WatchAndDateTimeActionResult m_byteToFloat;
  
 }
 

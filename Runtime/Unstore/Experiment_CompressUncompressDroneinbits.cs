@@ -7,6 +7,8 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Jobs;
 using UnityEngine;
 
+using Eloi.WatchAndDate;
+
 public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
 {
 
@@ -66,11 +68,11 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
         });
     }
     public float m_shieldMaxSize = ushort.MaxValue;
-    public WatchAndDateTimeResult m_fullJob;
-    public WatchAndDateTimeResult m_unityToBitsJob;
-    public WatchAndDateTimeResult m_structToByteJob;
-    public WatchAndDateTimeResult m_bytesToStructJob;
-    public WatchAndDateTimeResult m_bitsToUnityJob;
+    public WatchAndDateTimeActionResult m_fullJob;
+    public WatchAndDateTimeActionResult m_unityToBitsJob;
+    public WatchAndDateTimeActionResult m_structToByteJob;
+    public WatchAndDateTimeActionResult m_bytesToStructJob;
+    public WatchAndDateTimeActionResult m_bitsToUnityJob;
     private void TurnShieldDroneInUnityToBitsStruct()
     {
         m_unityToBitsJob.WatchTheAction(() =>
@@ -124,12 +126,9 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
             JobHandle jobHandle = job.Schedule(IMMO16K.ARRAY_MAX_SIZE, 64);
             jobHandle.Complete();
         });
-
-
-
     }
-
 }
+
 
 
 

@@ -8,6 +8,7 @@ using Unity.Jobs;
 using UnityEngine;
 using System;
 
+using Eloi.WatchAndDate;
 public class QuickDummyNative_SetRandomNativeArray : MonoBehaviour
 {
     public SNAM16K_ShieldDroneAsUnityFloatValue  m_shieldDrones;
@@ -15,8 +16,8 @@ public class QuickDummyNative_SetRandomNativeArray : MonoBehaviour
     public BigFloatArrayDrone16KMono m_bigFloatArray;
 
 
-    public WatchAndDateTimeResult m_jobCopy;
-    public WatchAndDateTimeResult m_nativeToByte;
+    public WatchAndDateTimeActionResult m_jobCopy;
+    public WatchAndDateTimeActionResult m_nativeToByte;
 
     private void Update()
     {

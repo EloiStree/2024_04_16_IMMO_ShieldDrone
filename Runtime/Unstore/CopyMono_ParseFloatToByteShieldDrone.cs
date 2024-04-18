@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Eloi.WatchAndDate;
 public class CopyMono_ParseFloatToByteShieldDrone : MonoBehaviour
 {
     public BigFloatArrayDrone16KMono m_bigFloatArray;
     public BigByteArrayDrone16KMono m_bigByteArray;
-    public WatchAndDateTimeResult m_copyBufferTime;
+    public WatchAndDateTimeActionResult m_copyBufferTime;
    
     void Update()
     {

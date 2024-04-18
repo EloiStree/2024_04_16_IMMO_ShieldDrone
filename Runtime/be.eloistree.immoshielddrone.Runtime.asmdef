@@ -5,7 +5,8 @@
         "Unity.Burst",
         "Unity.Burst.CodeGen",
         "be.eloistree.generaltoolbox",
-        "Unity.Mathematics"
+        "Unity.Mathematics",
+        "be.eloistree.watchexecutetim"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -8,9 +8,10 @@ using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
+using Eloi.WatchAndDate;
 public class JobLayerMono_MoveAllInputWihtOne : MonoBehaviour
 {
-    public WatchAndDateTimeResult m_takenTime;
+    public WatchAndDateTimeActionResult m_takenTime;
     public SNAM16K_IntegerUserValue m_userValue;
 
     [Range(-1f, 1f)] public float m_leftHorizontalAxis;

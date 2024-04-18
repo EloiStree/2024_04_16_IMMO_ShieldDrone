@@ -5,6 +5,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+using Eloi.WatchAndDate;
 public class ComputeMono_BigFloatArrayToTexture2D : MonoBehaviour
 {
     public BigFloatArrayDrone16KMono m_bigFloatArray;
@@ -18,7 +19,7 @@ public class ComputeMono_BigFloatArrayToTexture2D : MonoBehaviour
 
 
 
-    public WatchAndDateTimeResult m_timing;
+    public WatchAndDateTimeActionResult m_timing;
     //public double m_watchTimeMs;
     //public double m_watchTimeMsSetDate;
     //public double m_watchTimeMsSetBuffer;
