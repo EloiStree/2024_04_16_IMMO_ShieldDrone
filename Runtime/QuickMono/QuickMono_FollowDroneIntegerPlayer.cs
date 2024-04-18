@@ -16,8 +16,8 @@ public class QuickMono_FollowDroneIntegerPlayer : MonoBehaviour
     
     public Transform m_whatToMove;
     public UnityEvent<float> m_shieldState;
-    public SNAM_ShieldDroneAsUnityFloatValue m_droneToFollow;
-    public SNAM_IntegerPlayerIndexClaim m_indexClaim;
+    public SNAM16K_ShieldDroneAsUnityFloatValue  m_droneToFollow;
+    public SNAM16K_IntegerPlayerIndexClaim m_indexClaim;
 
     public int m_indexGameOfTarget;
 
