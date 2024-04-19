@@ -23,6 +23,14 @@ public abstract class StaticNativeArrayMono_SetDebugGeneric16K<T> :
             Push();
         }
     }
+    public void PushRandomValueWithAllTheArraySize()
+    {
+        for (int i = 0; i < m_arrayToSet.Length; i++)
+        {
+            m_arrayToSet[i] = GenerateRandomValue();
+        }
+        Push();
+    }
     public abstract T GenerateRandomValue();
 
     private void OnValidate()
@@ -33,10 +41,12 @@ public abstract class StaticNativeArrayMono_SetDebugGeneric16K<T> :
     [ContextMenu("Push")]
     public void Push() {
 
-        if (m_targetSNAM != null) { 
-            for (int i = 0; i < m_arrayToSet.Length; i++)
-            {
-                m_targetSNAM.Set(i, m_arrayToSet[i]);
+        if (Application.isPlaying) { 
+            if (m_targetSNAM != null) { 
+                for (int i = 0; i < m_arrayToSet.Length; i++)
+                {
+                    m_targetSNAM.Set(i, m_arrayToSet[i]);
+                }
             }
         }
     }

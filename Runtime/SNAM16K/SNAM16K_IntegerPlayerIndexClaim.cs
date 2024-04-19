@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DroneIMMO
 {
 
-    public class SNAM16K_IntegerPlayerIndexClaim : StaticNativeArrayMono_Generic16K<int>
+    public class SNAM16K_IntegerPlayerIndexClaim : SNAM16K_ObjectInteger
     {
         public Dictionary<int, int> m_dicoIntegerIndexToIndex = new Dictionary<int, int>();
 
