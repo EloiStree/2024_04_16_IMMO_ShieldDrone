@@ -8,7 +8,7 @@ using Unity.Collections;
 using DroneIMMO;
 using UnityEditor.Rendering;
 
-public class JobLayerMono_DronesAsTriangleInOneMesh :MonoBehaviour
+public class JobLayerMono_DronesAsTriangleInOneMesh : MonoBehaviour
 {
     public Mesh m_meshObject;
     public SNAM16K_ShieldDroneAsUnityFloatValue  m_drone;
@@ -32,6 +32,9 @@ public class JobLayerMono_DronesAsTriangleInOneMesh :MonoBehaviour
         m_trianglesOrder = new NativeArray<int>(IMMO16K.ARRAY_MAX_SIZE * 6, Allocator.Persistent);
         m_meshObject = new Mesh();
         m_filter.sharedMesh = m_meshObject;
+      
+      
+      
 
     }
 

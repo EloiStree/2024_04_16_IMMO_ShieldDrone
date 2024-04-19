@@ -22,7 +22,7 @@ namespace DroneIMMO
            return m_instanceInScene;
             
         }
-        
+
         public string GetStringId() {
             return m_guid;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Temp_UdpChunkReceptionMono : MonoBehaviour
 {
@@ -10,14 +11,11 @@ public class Temp_UdpChunkReceptionMono : MonoBehaviour
     public int m_lastChunkIndex;
 
     public long m_nowUtc;
-    public long m_receivedTimeBlockStart;
-    public long m_receivedTimeBlockEnd;
-    public long m_receivedTimeChunk;
-    public long m_receivedTimeFrame;
-
-    public float m_timeTickBetweenSendReceivedStart;
-    public float m_timeTickBetweenSendReceivedEnd;
-    public float m_timeTickFrameEndReceived;
+    public long m_lastStartPushing;
+    public long m_tickServerSideProduction; 
+    public double m_millisecondsServerSideProduction;
+    public long m_tickFromBuildToReceived;
+    public double m_millisecondsfromBuildToReceived;
 
 
     public int m_currentFrameIndex;
@@ -25,6 +23,9 @@ public class Temp_UdpChunkReceptionMono : MonoBehaviour
     public List<PackageChunkReceived> m_receivedPackage = new List<PackageChunkReceived>();
 
     public BigByteArrayCompressedDrone16KMono m_bigByteArray;
+
+    public UnityEvent m_lastChunkReceived;
+    public bool m_storeChunkBytesToDebugInStruct;
 
     [System.Serializable]
     public class PackageChunkReceived {
@@ -36,17 +37,17 @@ public class Temp_UdpChunkReceptionMono : MonoBehaviour
         public long m_sendTimeFrame;
         public long m_sendTimeBlock;
         public long m_sendTimeChunk;
-        public byte[] m_lastReceived;
+        public byte[] m_lastReceivedFullChunk;
 
     }
 
-    public byte[] m_lastReceived;
+    public byte[] m_lastReceivedFullChunk;
     
     public void PushIn(byte [] receivedChunk)
     {
-        m_lastReceived = receivedChunk;
+        m_lastReceivedFullChunk = receivedChunk;
 
-        if (receivedChunk.Length > 16)
+        if (receivedChunk!=null && receivedChunk.Length > 16)
         {
             int copyLenght = BitConverter.ToInt32(receivedChunk, 12);
             if (copyLenght + 40 == receivedChunk.Length) { 
@@ -74,7 +75,22 @@ public class Temp_UdpChunkReceptionMono : MonoBehaviour
                 p.m_receivedPackageTime = DateTime.UtcNow.Ticks;
                 byte[] bytes = m_bigByteArray.GetBytesArray();
                 Buffer.BlockCopy(receivedChunk, 40, bytes, p.m_offsetInArray, p.m_offsetLenght);
-                m_lastReceived = bytes;
+                if (m_storeChunkBytesToDebugInStruct) { 
+                    m_lastReceivedFullChunk = receivedChunk;
+                    p.m_lastReceivedFullChunk = receivedChunk;
+                }
+
+                if ( indexChunk ==m_receivedPackage.Count-1 && p.m_sendTimeFrame > m_lastStartPushing) {
+
+                    m_nowUtc = DateTime.UtcNow.Ticks;
+                    m_lastStartPushing = p.m_sendTimeFrame;
+                    m_tickFromBuildToReceived = m_nowUtc - m_lastStartPushing;
+                    m_tickServerSideProduction = p.m_sendTimeChunk - p.m_sendTimeFrame;
+                    m_millisecondsServerSideProduction = (double)m_tickServerSideProduction / TimeSpan.TicksPerMillisecond;
+                    m_millisecondsfromBuildToReceived = (double)m_tickFromBuildToReceived / TimeSpan.TicksPerMillisecond;
+                    m_lastChunkReceived.Invoke();
+                }
+
             }
 
         }
