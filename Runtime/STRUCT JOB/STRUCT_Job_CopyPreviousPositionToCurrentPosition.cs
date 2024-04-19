@@ -19,8 +19,14 @@ public struct STRUCT_Job_CopyPreviousPositionToCurrentPosition: IJobParallelFor
     public Vector3 m_zero;
     public void Execute(int index)
     {
-        if (m_currentPosition[index] != m_drones[index].m_position) { 
+        if (m_currentPosition[index] != m_drones[index].m_position)
+        {
             m_previousPosition[index] = m_currentPosition[index];
+            m_currentPosition[index] = m_drones[index].m_position;
+        }
+        else if(m_currentPosition[index]==Vector3.zero) {
+
+            m_previousPosition[index] = m_drones[index].m_position;
             m_currentPosition[index] = m_drones[index].m_position;
         }
         //if (m_booleanFilter[index])

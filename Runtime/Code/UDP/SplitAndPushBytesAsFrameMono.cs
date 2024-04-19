@@ -49,6 +49,8 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
 
     public bool m_usePushRepeatDefault = true;
     public float m_timeBetweenPush=1f/4f;
+    public bool m_useStoreByteToDebug;
+    public bool m_sendOnlyFirstChunkForTesting=true;
     private void Start()
     {
 
@@ -63,18 +65,35 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
     public int m_port=3715;
 
     public byte[] m_pushed;
-    [ContextMenu("Push Frame")]
 
-    public void SetDateTimeOfWhenTheFrameStartToBuild(DateTime time) {
+    public void SetDateTimeOfWhenTheFrameStartToBuild(DateTime time)
+    {
         m_startBuildingFrameTimestamp = time.Ticks;
+
+    }
+    public void SetDateTimeOfWhenTheFrameStartToBuildNow()
+    {
+        m_startBuildingFrameTimestamp = DateTime.UtcNow.Ticks;
 
     }
 
     public byte[] m_lastPushChunk;
+    public byte[] m_firstPushChunk;
     private UdpClient m_udpClient = null;
     private List<IPEndPoint> m_endPoints= new List<IPEndPoint>();
 
-    void PushFrame()
+    public List<ChunkOfByte> m_chunkSent = new List<ChunkOfByte>();
+
+    [System.Serializable]
+    public class ChunkOfByte {
+        public ChunkOfByte(int size) { 
+        
+            m_lastChunkSent = new byte[size];
+        }
+        public byte[] m_lastChunkSent;
+    }
+    [ContextMenu("Push Frame")]
+    public void PushFrame()
     {
         RefreshComputeValue();
         byte [] source = m_source.GetBytesArray();
@@ -89,17 +108,20 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
             int copyLength = m_bytePerChunkWithoutStart;
             m_sendTimestampChunk = DateTime.UtcNow.Ticks;
             m_pushChunk.StartCounting();
+            while (i >= m_chunkSent.Count)
+                m_chunkSent.Add(new ChunkOfByte( m_bytePerChunkWithStart));
 
-            m_lastPushChunk = new byte[m_bytePerChunkWithStart];
-            BitConverter.GetBytes(m_frameIndex).CopyTo(m_lastPushChunk, 0);
-            BitConverter.GetBytes(m_chunkIndex).CopyTo(m_lastPushChunk, 4);
-            BitConverter.GetBytes(copyOffset).CopyTo(m_lastPushChunk, 8);
-            BitConverter.GetBytes(copyLength ).CopyTo(m_lastPushChunk, 12);
-            BitConverter.GetBytes(m_startBuildingFrameTimestamp>0? m_startBuildingFrameTimestamp: m_sendTimestampBlock).CopyTo(m_lastPushChunk, 16);
-            BitConverter.GetBytes(m_sendTimestampBlock ).CopyTo(m_lastPushChunk, 24);
-            BitConverter.GetBytes(m_sendTimestampChunk).CopyTo(m_lastPushChunk, 32);
-            Buffer.BlockCopy(source, copyOffset, m_lastPushChunk, 40, m_bytePerChunkWithoutStart);
+            byte[] inProcessChunk = m_chunkSent[i].m_lastChunkSent ;
+            BitConverter.GetBytes(m_frameIndex).CopyTo(inProcessChunk, 0);
+            BitConverter.GetBytes(m_chunkIndex).CopyTo(inProcessChunk, 4);
+            BitConverter.GetBytes(copyOffset).CopyTo(inProcessChunk, 8);
+            BitConverter.GetBytes(copyLength ).CopyTo(inProcessChunk, 12);
+            BitConverter.GetBytes(m_startBuildingFrameTimestamp>0? m_startBuildingFrameTimestamp: m_sendTimestampBlock).CopyTo(inProcessChunk, 16);
+            BitConverter.GetBytes(m_sendTimestampBlock ).CopyTo(inProcessChunk, 24);
+            BitConverter.GetBytes(m_sendTimestampChunk).CopyTo(inProcessChunk, 32);
+            Buffer.BlockCopy(source, copyOffset, inProcessChunk, 40, m_bytePerChunkWithoutStart);
 
+          
             try
             {
                 if (m_udpClient == null) {
@@ -108,7 +130,7 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
                 }
                 foreach (var target in m_endPoints)
                 {
-                    m_udpClient.Send(m_lastPushChunk, m_lastPushChunk.Length, target);
+                    m_udpClient.Send(inProcessChunk, inProcessChunk.Length, target);
                 }
             }
             catch (Exception ex)
@@ -116,9 +138,11 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
                 Console.WriteLine("Error sending byte: " + ex.Message);
             }
            
-            m_pushed = m_lastPushChunk;
+            m_pushed = inProcessChunk;
             m_pushChunk.StopCounting();
             m_chunkIndex++;
+            if (m_sendOnlyFirstChunkForTesting)
+                break;
         }
         m_pushFrame.StopCounting();
     }
