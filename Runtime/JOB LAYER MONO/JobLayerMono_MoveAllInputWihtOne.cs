@@ -25,6 +25,7 @@ public class JobLayerMono_MoveAllInputWihtOne : MonoBehaviour
     public bool m_useJoystick;
     public float m_deathZone = 0.1f;
 
+    public bool m_useAdditionalAxisOldInput=false;
     void Update()
     {
         if (m_useJoystick) {
@@ -33,8 +34,10 @@ public class JobLayerMono_MoveAllInputWihtOne : MonoBehaviour
             // Read joystick input values
             m_leftHorizontalAxis = Input.GetAxis("Horizontal");
             m_leftVerticalAxis = Input.GetAxis("Vertical");
-            m_rightHorizontalAxis = Input.GetAxis("HorizontalRotation");
-            m_rightVerticalAxis = Input.GetAxis("VerticalRotation");
+            if (m_useAdditionalAxisOldInput) { 
+                m_rightHorizontalAxis = Input.GetAxis("HorizontalRotation");
+                m_rightVerticalAxis = Input.GetAxis("VerticalRotation");
+            }
 
         }
 

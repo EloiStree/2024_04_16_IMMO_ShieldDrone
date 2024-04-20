@@ -16,6 +16,9 @@ public class JobLayerMono_SetRandomIntegerInput : MonoBehaviour
     public SNAM16K_IntegerPlayerIndexClaim m_indexClaim;
     public SNAM16K_IntegerUserValue m_userValue;
     public SNAM16K_UpdateRandomSeed m_seeds;
+    public bool m_useFromTo=true;
+    public int m_from= 1000;
+    public int m_to= IMMO16K.ARRAY_MAX_SIZE;
 
     [Header("Debug dirty")]
     public bool m_useAwake;
@@ -45,8 +48,13 @@ public class JobLayerMono_SetRandomIntegerInput : MonoBehaviour
             {
                 m_input = target,
                 m_randomSeed = m_seeds.GetNativeArray(),
-                m_offset = offset
-            };
+                m_offset = offset,
+
+
+ m_useFromTo = m_useFromTo,
+m_from = m_from,
+m_to = m_to,
+};
             job.Schedule(128*128, 64).Complete();
         });
     }

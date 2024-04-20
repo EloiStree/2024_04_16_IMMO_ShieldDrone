@@ -11,10 +11,17 @@ public struct JobStruct_SetRandomIntegerInput : IJobParallelFor
     [NativeDisableParallelForRestriction]
     [ReadOnly]
     public NativeArray<uint> m_randomSeed;
+    public bool m_useFromTo; 
+ public int m_from;
+    public int m_to;
 
     public int m_offset;
     public void Execute(int index)
     {
+
+        if (m_useFromTo && (index < m_from || index > m_to))
+            return;
+
         int rIndex = index + m_offset;
         if(rIndex<0) rIndex *= -1;
         

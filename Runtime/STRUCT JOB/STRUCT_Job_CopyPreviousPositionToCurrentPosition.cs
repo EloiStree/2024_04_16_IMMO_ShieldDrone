@@ -24,18 +24,6 @@ public struct STRUCT_Job_CopyPreviousPositionToCurrentPosition: IJobParallelFor
             m_previousPosition[index] = m_currentPosition[index];
             m_currentPosition[index] = m_drones[index].m_position;
         }
-        else { 
-        
-        }
-        //if (m_booleanFilter[index])
-        //{
-        //    m_previousPosition[index] = m_currentPosition[index];
-        //    m_currentPosition[index] = m_drones[index].m_position;
-        //}
-        //else { 
-        //    m_previousPosition[index] = m_zero;
-        //    m_currentPosition[index] = m_zero;
-        //}
 
     }
 }

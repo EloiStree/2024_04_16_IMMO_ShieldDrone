@@ -123,12 +123,31 @@ public struct Job_SetTriangleTailBetweenTwoPoint : IJobParallelFor
 
     public void Execute(int index)
     {
+
+
         Vector3 from = m_inverse? m_previousPosition[index]:m_currentPosition[index];
+        
         Vector3 to = m_inverse ? m_currentPosition[index]:m_previousPosition[index];
+
+        //if(from.magnitude <0.1f) {
+        //    from=to; }
+
+        if (from.magnitude < 0.01f)
+        {
+            from = to;
+        }
+        if (to.magnitude < 0.01f)
+        {
+            to= from ;
+        }
+
+
         Vector3 directionV3 = (to - from);
+
         Quaternion direction = Quaternion.identity;
         if (directionV3.magnitude != 0) 
              direction= Quaternion.LookRotation(directionV3);
+
         float distance = Vector3.Distance(from, to);
         if(distance < 0.1) {
             distance = m_minDistance;
