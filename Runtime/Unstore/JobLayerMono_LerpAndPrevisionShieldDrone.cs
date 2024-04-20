@@ -17,10 +17,11 @@ public class JobLayerMono_LerpAndPrevisionShieldDrone : MonoBehaviour
     public long m_lastUpdateDelayTick;
     public float m_percentFromLastUpdate;
 
-    public void NotifyAsPackageReceived() {
+    public void NotifyAsPackageReceived()
+    {
         long now = DateTime.UtcNow.Ticks;
         m_lastUpdateDelayTick = now - m_lastUpdateDate;
-        m_lastUpdateDate = now ;
+        m_lastUpdateDate = now;
     }
 
     private JobHandle m_jobHandle;
@@ -32,10 +33,10 @@ public class JobLayerMono_LerpAndPrevisionShieldDrone : MonoBehaviour
         long delay = now - m_lastUpdateDate;
         if (m_lastUpdateDelayTick > 0)
         {
-            m_percentFromLastUpdate = delay /(float) m_lastUpdateDelayTick;
+            m_percentFromLastUpdate = delay / (float)m_lastUpdateDelayTick;
         }
         else { m_percentFromLastUpdate = 1f; }
-      
+
 
         STRUCT_Job_ShieldDroneUnityLerpPrevision job = new STRUCT_Job_ShieldDroneUnityLerpPrevision()
         {
@@ -60,13 +61,17 @@ public struct STRUCT_Job_ShieldDroneUnityLerpPrevision : IJobParallelFor
     public NativeArray<STRUCT_ShieldDroneAsUnity> m_dronesLerped;
 
     public float m_percentBetweenUpdate;
-
+    public Quaternion m_zeroQuaternion;
     public void Execute(int index)
     {
-        STRUCT_ShieldDroneAsUnity current= m_dronesCurrent[index];
+        STRUCT_ShieldDroneAsUnity current = m_dronesCurrent[index];
         STRUCT_ShieldDroneAsUnity display = m_dronesLerped[index];
-        
 
+
+        if (IsNaN(display.m_rotation))
+            display.m_rotation = Quaternion.identity;
+        if (IsNaN(current.m_rotation))
+            current.m_rotation = Quaternion.identity;
 
         if (m_percentBetweenUpdate < 0.05f)
         {
@@ -74,14 +79,28 @@ public struct STRUCT_Job_ShieldDroneUnityLerpPrevision : IJobParallelFor
             display.m_rotation = current.m_rotation;
             //display.m_shield = current.m_shield;
         }
-        else {
-
-            display.m_position = Vector3.Lerp(display.m_position ,current.m_position, m_percentBetweenUpdate);
+        else if ((current.m_position.magnitude < 1000 && current.m_position.magnitude < 1000))
+        {
+            display.m_position = Vector3.Lerp(display.m_position, current.m_position, m_percentBetweenUpdate);
             display.m_rotation = Quaternion.Lerp(display.m_rotation, current.m_rotation, m_percentBetweenUpdate);
-           // display.m_shield =Mathf.Lerp(display.m_shield, current.m_shield, m_percentBetweenUpdate);
+
+            // display.m_shield =Mathf.Lerp(display.m_shield, current.m_shield, m_percentBetweenUpdate);
+        }
+        else
+        {
+
+            display.m_position = current.m_position;
+            display.m_rotation = current.m_rotation;
         }
 
         m_dronesLerped[index] = display;
+    }
+    private bool IsNaN(Quaternion q)
+    {
+        if (q.x == 0f && q.y == 0f && q.z == 0f && q.w == 0f)
+            return true;
+
+        return float.IsNaN(q.x) || float.IsNaN(q.y) || float.IsNaN(q.z) || float.IsNaN(q.w);
     }
 }
 

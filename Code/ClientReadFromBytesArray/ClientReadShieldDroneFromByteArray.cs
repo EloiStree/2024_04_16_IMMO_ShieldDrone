@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
 
-public class ClientReadShieldDroneFromBytesArray : MonoBehaviour
+public class ClientReadShieldDroneFromByteArray : MonoBehaviour
 {
 
     [Header("Client Side")]
