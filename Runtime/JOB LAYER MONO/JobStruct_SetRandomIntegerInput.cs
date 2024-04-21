@@ -30,7 +30,12 @@ public struct JobStruct_SetRandomIntegerInput : IJobParallelFor
             seed = 42;
 
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(seed);
-        m_input[index] = random.NextInt(1100000000, 1199999999);
 
+        int value = 1100000000;
+        value += 99;
+        value += random.NextInt(00, 99) * 100;
+        value += random.NextInt(00, 99) * 10000;
+        value += random.NextInt(00, 99) * 1000000;
+        m_input[index] = value;
     }
 }

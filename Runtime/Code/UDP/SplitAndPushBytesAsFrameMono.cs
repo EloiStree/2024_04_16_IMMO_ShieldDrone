@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SplitAndPushBytesAsFrameMono : MonoBehaviour
 {
+
+    public UnityEvent<byte[]> m_onByteChunkPush;
 
     public BigByteArrayCompressedDrone16KMono m_source;
 
@@ -121,22 +124,9 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
             BitConverter.GetBytes(m_sendTimestampChunk).CopyTo(inProcessChunk, 32);
             Buffer.BlockCopy(source, copyOffset, inProcessChunk, 40, m_bytePerChunkWithoutStart);
 
-          
-            try
-            {
-                if (m_udpClient == null) {
-                    m_udpClient = new UdpClient();
-                    m_endPoints.Add(new IPEndPoint(IPAddress.Parse(m_ipAddress), m_port));
-                }
-                foreach (var target in m_endPoints)
-                {
-                    m_udpClient.Send(inProcessChunk, inProcessChunk.Length, target);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending byte: " + ex.Message);
-            }
+
+            m_onByteChunkPush.Invoke(inProcessChunk);
+            
            
             m_pushed = inProcessChunk;
             m_pushChunk.StopCounting();
@@ -146,9 +136,5 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
         }
         m_pushFrame.StopCounting();
     }
-     void OnDestroy()
-    {
-        if (m_udpClient != null)
-            m_udpClient.Close();
-    }
+    
 }

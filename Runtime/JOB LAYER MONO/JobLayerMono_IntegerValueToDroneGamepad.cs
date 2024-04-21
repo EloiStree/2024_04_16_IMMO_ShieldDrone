@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class JobLayerMono_IntegerValueToDroneGamepad : MonoBehaviour
 {
+    public SNAM16K_ObjectByte m_flyingType;
     public SNAM16K_IntegerUserValue m_integerValeue;
     public SNAM16K_DroneGamepad16K m_droneController;
     public SNAM16K_EasyDronePositionState m_droneInEasyDroneState;
@@ -22,7 +23,7 @@ public class JobLayerMono_IntegerValueToDroneGamepad : MonoBehaviour
     public STRUCT_DroneGamepad[]     m_droneGamepad10= new STRUCT_DroneGamepad[10];
     public STRUCT_EasyDroneState[]      m_easyDrone10 = new STRUCT_EasyDroneState[10];
     public STRUCT_ShieldDroneAsUnity[]  m_droneInUnity10 = new STRUCT_ShieldDroneAsUnity[10];
-
+    public STRUCT_DroneMoveRotateConfigSpeed m_configSpeed;
     public void Update()
     {
         
@@ -39,10 +40,7 @@ public class JobLayerMono_IntegerValueToDroneGamepad : MonoBehaviour
             m_dronesGamepad = m_droneController.GetNativeArray(),
             m_droneInUnity = m_droneInEasyDroneState.GetNativeArray(),
             m_delaTime = Time.deltaTime,
-            m_rotationAngleSpeed = m_rotationAngleSpeed,
-            m_downUpSpeed = m_downUpSpeed,
-            m_frontalSpeed = m_frontalSpeed,
-            m_lateralSpeed = m_lateralSpeed
+            m_configSpeed = m_configSpeed,
         };
         job2.Schedule(IMMO16K.ARRAY_MAX_SIZE, 64).Complete();
 
