@@ -18,7 +18,7 @@ public class QuickMono_FollowDroneIntegerPlayer : MonoBehaviour
     public UnityEvent<float> m_shieldState;
     public SNAM16K_ShieldDroneAsUnityFloatValue  m_droneToFollow;
     public SNAM16K_IntegerPlayerIndexClaim m_indexClaim;
-
+    public DicoClaimToSNAMIndexClaimMono m_dico;
     public int m_indexGameOfTarget;
 
     public STRUCT_ShieldDroneAsUnity m_droneFocus;
@@ -55,7 +55,7 @@ public class QuickMono_FollowDroneIntegerPlayer : MonoBehaviour
         if (type == IndexType.IntegerIndex)
         {
 
-            m_indexClaim.GetFromIntegerIndex(index, out bool found, out int indexFound);
+            m_dico.GetFromIntegerIndex(index, out bool found, out int indexFound);
             if(found)
             {
                 m_indexGameOfTarget = indexFound;
@@ -72,7 +72,7 @@ public class QuickMono_FollowDroneIntegerPlayer : MonoBehaviour
 
     public void FindRandomPlayer() {
 
-        m_indexClaim.GetRandomActivePlayer(out int integerIndex);
+        m_dico.GetRandomActivePlayer(out int integerIndex);
         ChangeFocus(integerIndex, IndexType.IntegerIndex);
 
     }

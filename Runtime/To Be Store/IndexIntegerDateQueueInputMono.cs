@@ -8,7 +8,7 @@ public class IndexIntegerDateQueueInputMono :MonoBehaviour{
     public IndexIntegerDateStruct [] m_lasts= new IndexIntegerDateStruct[10];
     public Queue<IndexIntegerDateStruct> m_queue = new Queue<IndexIntegerDateStruct>();
     public SNAM16K_IntegerPlayerIndexClaim m_userIndexClaim;
-
+    public DicoClaimToSNAMIndexClaimMono m_dico;
     public void Enqueue(IndexIntegerDateStruct item)
     {
         m_queue.Enqueue(item);
@@ -34,7 +34,7 @@ public class IndexIntegerDateQueueInputMono :MonoBehaviour{
             m_lasts[0] = m_last;
 
 
-            m_userIndexClaim.GetFromIntegerIndex( m_last.index,
+            m_dico.GetFromIntegerIndex( m_last.index,
                 out bool found, out int index);
             if(found)
             {
@@ -42,9 +42,10 @@ public class IndexIntegerDateQueueInputMono :MonoBehaviour{
             }
             else
             {
-                m_userIndexClaim.GetNextFree(out int indexFree);
+                m_dico.GetNextFree(out int indexFree);
                 if (indexFree >= 0) {
-                    m_userIndexClaim.ClaimArrayWithUserIntegerIndex(indexFree, m_last.index);
+
+                    m_dico.ClaimArrayIndexWithNewIntegerOwner(indexFree, m_last.index);
                     SNAM16K_IntegerUserValue.I().Set(indexFree,  m_last.value );
                 }
             }

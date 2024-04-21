@@ -55,9 +55,9 @@ public struct Job_SetRandomPositionToAll : IJobParallelFor
         STRUCT_EasyDroneState drone = new STRUCT_EasyDroneState();
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(seed);
 
-        drone.m_position.x = random.NextFloat(-m_cubeRange, m_cubeRange);
-        drone.m_position.y = random.NextFloat(-m_cubeRange, m_cubeRange);
-        drone.m_position.z = random.NextFloat(-m_cubeRange, m_cubeRange);
+        drone.m_position.x = random.NextFloat(-0, m_cubeRange);
+        drone.m_position.y = random.NextFloat(-0, m_cubeRange);
+        drone.m_position.z = random.NextFloat(-0, m_cubeRange);
 
         m_easyDrone[index] = drone;
     }

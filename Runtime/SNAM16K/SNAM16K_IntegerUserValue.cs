@@ -1,6 +1,6 @@
 ﻿namespace DroneIMMO
 {
-    public class SNAM16K_IntegerUserValue: StaticNativeArrayMono_Generic16K<int> { }
+    public class SNAM16K_IntegerUserValue: SNAM16K_ObjectInteger { }
     
     [System.Serializable]
     public struct IntegerPlayerValue
