@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DroneIMMO
 {
 
-    public class SNAM16K_IntegerPlayerIndexClaim : SNAM16K_ObjectInteger
+    public class SNAM16K_IntegerPlayerIndexClaim : SNAM16K_ObjectInt
     {
     }
 }

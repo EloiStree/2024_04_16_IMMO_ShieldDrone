@@ -16,7 +16,7 @@ public class JobLayerMono_LineOfShieldDrone16K : MonoBehaviour
     public float m_timePerUpdateJob = 0.0f;
     public float m_timePerUpdateDraw = 0.0f;
     public SNAM16K_ShieldDroneAsUnityFloatValue  m_droneInUnity;
-    public SNAM16K_ObjectBoolean m_isGameIndexUse;
+    public SNAM16K_ObjectBool m_isGameIndexUse;
     public SNAM16K_DebugDrawLine m_linesDuoPoints;
 
     public float m_timedeltaMutiplicator=10;
