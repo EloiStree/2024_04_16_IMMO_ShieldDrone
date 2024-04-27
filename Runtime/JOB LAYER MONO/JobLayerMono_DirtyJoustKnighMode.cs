@@ -8,8 +8,8 @@ using UnityEngine;
 public class JobLayerMono_DirtyJoustKnighMode : MonoBehaviour
 {
 
-    public SNAM16K_ObjectBoolean m_activeInGame;
-    public SNAM16K_ObjectBoolean m_inCollision;
+    public SNAM16K_ObjectBool m_activeInGame;
+    public SNAM16K_ObjectBool m_inCollision;
     public SNAM16K_ObjectVector3 m_joustingPoint;
     public SNAM16K_UpdateRandomSeed m_seeds;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_dronesInGame;
