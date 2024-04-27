@@ -14,8 +14,8 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
 
 
     [Header("Server Side")]
-    public SNAM16K_ObjectBoolean                m_inputIsInGame;
-    public SNAM16K_ObjectBoolean                m_inputIsInCollision;
+    public SNAM16K_ObjectBool                m_inputIsInGame;
+    public SNAM16K_ObjectBool                m_inputIsInCollision;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_inputDroneUnity;
     public SNAM16K_ShieldDroneCompressedAsBits  m_inputDroneBits;
 
@@ -27,8 +27,8 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
     [Header("Client Side")]
     public SNAM16K_ShieldDroneCompressedAsBits m_outputDroneBits;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_outputDroneUnity;
-    public SNAM16K_ObjectBoolean m_outputIsInGame;
-    public SNAM16K_ObjectBoolean m_outputIsInCollision;
+    public SNAM16K_ObjectBool m_outputIsInGame;
+    public SNAM16K_ObjectBool m_outputIsInCollision;
 
     [Header("Debug Compare")]
     public bool m_isInputInGame;

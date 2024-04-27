@@ -13,8 +13,8 @@ public class ClientReadShieldDroneFromByteArray : MonoBehaviour
     public BigByteNativeArrayCompressedDrone16KMono m_outputBigByteArray;
     public SNAM16K_ShieldDroneCompressedAsBits m_outputDroneBits;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_outputDroneUnity;
-    public SNAM16K_ObjectBoolean m_outputIsInGame;
-    public SNAM16K_ObjectBoolean m_outputIsInCollision;
+    public SNAM16K_ObjectBool m_outputIsInGame;
+    public SNAM16K_ObjectBool m_outputIsInCollision;
 
 
     public WatchAndDateTimeActionResult m_bytesToStructJob;

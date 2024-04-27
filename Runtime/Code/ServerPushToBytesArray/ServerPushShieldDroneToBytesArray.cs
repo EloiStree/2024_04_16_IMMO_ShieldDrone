@@ -8,8 +8,8 @@ using UnityEngine.Events;
 public class ServerPushShieldDroneToBytesArray : MonoBehaviour
 {
     [Header("Server Side")]
-    public SNAM16K_ObjectBoolean m_inputIsInGame;
-    public SNAM16K_ObjectBoolean m_inputIsInCollision;
+    public SNAM16K_ObjectBool m_inputIsInGame;
+    public SNAM16K_ObjectBool m_inputIsInCollision;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_inputDroneUnity;
     public SNAM16K_ShieldDroneCompressedAsBits m_inputDroneBits;
 
