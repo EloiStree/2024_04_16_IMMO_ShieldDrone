@@ -1,6 +1,6 @@
 ﻿namespace DroneIMMO
 {
-    public class SNAM16K_LastReceivedValueTimeStamp : StaticNativeArrayMono_Generic16K<ulong> { }
+    public class SNAM16K_LastReceivedValueTimeStamp : SNAM_Generic16K<ulong> { }
 
 
     //[System.Serializable]
