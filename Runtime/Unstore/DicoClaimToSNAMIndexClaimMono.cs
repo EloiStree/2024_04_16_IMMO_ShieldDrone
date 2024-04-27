@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using Unity.Jobs;
-using static UnityEditor.Experimental.GraphView.Port;
 using System;
 
 public class DicoClaimToSNAMIndexClaimMono : MonoBehaviour

@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4743741616983629381
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44,6 +44,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4743741616983629381}
     m_Modifications:
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.973
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9917556
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12814397
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670558400025270522, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 14.725
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069096132889429800, guid: 030b531fd69e9134983e235349b21ebd,
+        type: 3}
+      propertyPath: field of view
+      value: 67.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2069096132889429800, guid: 030b531fd69e9134983e235349b21ebd,
         type: 3}
       propertyPath: m_BackGroundColor.b
