@@ -12,12 +12,14 @@ public class HelloSplitAndPushBytesAsFrameMono : MonoBehaviour
 
     public UnityEvent<byte[]> m_onByteChunkPush;
 
+    public UnityEvent<string , byte[]> m_onNamedByteChunkPush;
+
     public BigByteArrayCompressedDrone16KMono m_source;
 
     public byte m_arrayUniqueIdInProject=1;
     public int m_droneSendMultipleOf2 = 32;
 
-
+    public string m_arrayName="DroneByteArray";
 
 
 
@@ -126,8 +128,9 @@ public class HelloSplitAndPushBytesAsFrameMono : MonoBehaviour
 
 
             m_onByteChunkPush.Invoke(inProcessChunk);
-            
-           
+            m_onNamedByteChunkPush.Invoke(m_arrayName, inProcessChunk);
+
+
             m_pushed = inProcessChunk;
             m_pushChunk.StopCounting();
             m_chunkIndex++;
