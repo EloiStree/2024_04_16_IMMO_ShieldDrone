@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_sendTimestampChunk: 0
   m_startBuildingFrameTimestamp: 0
   m_usePushRepeatDefault: 1
-  m_timeBetweenPush: 1
+  m_timeBetweenPush: 0.125
   m_useStoreByteToDebug: 1
   m_sendOnlyFirstChunkForTesting: 1
   m_pushFrame:
