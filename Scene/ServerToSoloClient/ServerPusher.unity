@@ -1554,8 +1554,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1867596037}
+        m_TargetAssemblyTypeName: ConnectToRelayServerTunnelingRsaMono, be.eloistree.networksenders
+        m_MethodName: PushMessageBytes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_onNamedByteChunkPush:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1867596039}
+        m_TargetAssemblyTypeName: PushcChunkOfBytesToMirrorInstanceMono, be.eloistree.immomemoryfilemirrorrelayrsa
+        m_MethodName: PushChunkArray
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_source: {fileID: 991116395}
   m_droneSendMultipleOf2: 32
+  m_arrayName: DroneByteArray
   m_elementByteSize: 11
   m_droneSendPerChunk: 1024
   m_chunkStartByteSize: 40
@@ -7857,6 +7885,74 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1976474879}
   m_SourcePrefab: {fileID: 100100000, guid: bcbb5f6483cc9b64997f8f34e1b484ae, type: 3}
+--- !u!1001 &1366036438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245176965219175638, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773571070375551596, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirror Network Client Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d1ac69ebe0f6644cbb81bb45d95837b, type: 3}
 --- !u!1 &1374481290
 GameObject:
   m_ObjectHideFlags: 0
@@ -8409,7 +8505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_inputIsInGame: {fileID: 643545124}
-  m_inputIsInCollision: {fileID: 1939003125}
+  m_inputIsInCollision: {fileID: 0}
   m_inputDroneUnity: {fileID: 789922563}
   m_inputDroneBits: {fileID: 1007224155}
   m_inputBigByteArray: {fileID: 922799258}
@@ -9752,7 +9848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_activeInGame: {fileID: 643545124}
-  m_inCollision: {fileID: 1939003125}
+  m_inCollision: {fileID: 1939003127}
   m_joustingPoint: {fileID: 1759023299}
   m_seeds: {fileID: 1459913408}
   m_dronesInGame: {fileID: 789922563}
@@ -11330,6 +11426,24 @@ MonoBehaviour:
   m_affectedClaim: {fileID: 0}
   m_affectedValue: {fileID: 1741328969}
   m_maxIndexReach: 0
+--- !u!1 &1867596037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4717342339724684991, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366036438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867596039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2035039045895722880, guid: 8d1ac69ebe0f6644cbb81bb45d95837b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366036438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867596037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8229aaec38e7b6e4986374b848e6cf90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1869767020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11769,7 +11883,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939003126}
-  - component: {fileID: 1939003125}
+  - component: {fileID: 1939003127}
   m_Layer: 0
   m_Name: S Collision
   m_TagString: Untagged
@@ -11777,20 +11891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1939003125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939003124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e63bec4e4ecbf4a80ee1b6de0cb472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_sample: 0
-  m_guid: fa3f4998-18af-4d6e-9ec0-4e4fb25041ba
 --- !u!4 &1939003126
 Transform:
   m_ObjectHideFlags: 0
@@ -11806,6 +11906,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1055480552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1939003127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939003124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e47589eb72d3b4cb010c82833c95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sample: 0
+  m_guid: d41f4d24-acf9-493d-ae16-0da43e4572b4
 --- !u!1001 &1952325100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14853,3 +14967,4 @@ SceneRoots:
   - {fileID: 809950747}
   - {fileID: 1378739350}
   - {fileID: 1272455578985031830}
+  - {fileID: 1366036438}
