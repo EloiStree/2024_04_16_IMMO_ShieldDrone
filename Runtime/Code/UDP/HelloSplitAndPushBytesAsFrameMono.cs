@@ -24,9 +24,9 @@ public class HelloSplitAndPushBytesAsFrameMono : MonoBehaviour
 
 
     [Header("Don't touch")]
-    public int m_elementByteSize = 11;
-    public int m_droneSendPerChunk = 32 * 32;
-    public int m_chunkStartByteSize = 4 + 4 + 4 + 4 + 8 + 8+8;
+    int m_elementByteSize = 11;
+    int m_droneSendPerChunk = 32 * 32;
+    int m_chunkStartByteSize =1 + 4 + 4 + 4 + 4 + 8 + 8+8;
     public int m_bytePerChunkWithoutStart;
     public int m_bytePerChunkWithStart;
 
