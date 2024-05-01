@@ -463,12 +463,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!81 &46380137
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599badb18f475fa44927be21b0dbcf03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targetSNAM: {fileID: 0}
+  m_targetSNAM: {fileID: 991116396}
   m_arrayToSet: 00010000010001000100
   m_useValidated: 1
   m_randomizeInputAtUpdate: 1
@@ -4930,12 +4930,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &809950746
 GameObject:
   m_ObjectHideFlags: 0
@@ -5911,12 +5911,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!20 &983500561
 Camera:
   m_ObjectHideFlags: 0
@@ -6011,11 +6011,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 991116394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e63bec4e4ecbf4a80ee1b6de0cb472, type: 3}
+  m_Script: {fileID: 11500000, guid: e0e47589eb72d3b4cb010c82833c95e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_sample: 0
-  m_guid: ab0c1504-1f2b-44a3-943f-c4f3344489c2
+  m_guid: e86a7a5e-04a0-4ba0-a5ac-29b5bebf2f67
 --- !u!1001 &998930238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7813,11 +7813,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329908502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e63bec4e4ecbf4a80ee1b6de0cb472, type: 3}
+  m_Script: {fileID: 11500000, guid: e0e47589eb72d3b4cb010c82833c95e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_sample: 0
-  m_guid: ab0c1504-1f2b-44a3-943f-c4f3344489c2
+  m_guid: 9fbf5a25-9704-4038-94df-068c044bfbb7
 --- !u!1 &1331264127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1375919215447527447, guid: 1f3816aa88681504ab5b94504601dcd8,
@@ -9413,12 +9413,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!20 &1548184480
 Camera:
   m_ObjectHideFlags: 0
@@ -10893,7 +10893,7 @@ MonoBehaviour:
   m_timePerUpdateJob: 0
   m_timePerUpdateDraw: 0
   m_droneInUnity: {fileID: 2123476050}
-  m_isGameIndexUse: {fileID: 1329908504}
+  m_isGameIndexUse: {fileID: 0}
   m_linesDuoPoints: {fileID: 317662606}
   m_timedeltaMutiplicator: 1
 --- !u!1001 &1844830360
@@ -11136,8 +11136,8 @@ MonoBehaviour:
   m_outputBigByteArray: {fileID: 1007224155}
   m_outputDroneBits: {fileID: 2015435586}
   m_outputDroneUnity: {fileID: 2123476050}
-  m_outputIsInGame: {fileID: 1329908504}
-  m_outputIsInCollision: {fileID: 991116396}
+  m_outputIsInGame: {fileID: 0}
+  m_outputIsInCollision: {fileID: 0}
   m_bytesToStructJob:
     m_watchTimeLabelDescription: Watch Time of ..
     m_watchTimeInTick: 0
