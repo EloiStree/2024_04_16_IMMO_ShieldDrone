@@ -118,9 +118,9 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
 
     private void TurnBitsDroneStructToUnityDrone()
     {
-        m_bitsToUnityJob.WatchTheAction(() =>
+        m_bitsToUnityJob.WatchTheAction((Action)(() =>
         {
-            STRUCT_Job_TurnDoneBitsIntoDroneUnity job = new STRUCT_Job_TurnDoneBitsIntoDroneUnity()
+            STRUCT_Job_TurnDroneBitsIntoDroneUnity job = new global::STRUCT_Job_TurnDroneBitsIntoDroneUnity()
             {
                 m_bigByteCompressed = m_outputBigByteArray.GetBytesNativeArray(),
                 m_shieldDroneAsBits = m_outputDroneBits.GetNativeArray(),
@@ -130,7 +130,7 @@ public partial class Experiment_CompressUncompressDroneinbits : MonoBehaviour
             };
             JobHandle jobHandle = job.Schedule(IMMO16K.ARRAY_MAX_SIZE, 64);
             jobHandle.Complete();
-        });
+        }));
     }
 }
 

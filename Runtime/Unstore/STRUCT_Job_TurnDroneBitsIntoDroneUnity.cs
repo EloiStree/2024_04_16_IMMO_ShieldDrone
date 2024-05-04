@@ -4,7 +4,7 @@ using Unity.Jobs;
 using UnityEngine;
 
 [BurstCompile]
-public struct STRUCT_Job_TurnDoneBitsIntoDroneUnity : IJobParallelFor
+public struct STRUCT_Job_TurnDroneBitsIntoDroneUnity : IJobParallelFor
 {
     [NativeDisableParallelForRestriction]
     [ReadOnly]
@@ -40,24 +40,8 @@ public struct STRUCT_Job_TurnDoneBitsIntoDroneUnity : IJobParallelFor
           bits.m_shieldState= m_bigByteCompressed[offsetStart + 10] ;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         STRUCT_ShieldDroneAsUnity drone = new STRUCT_ShieldDroneAsUnity();
         byte dronestate = bits.m_droneState;
-
-
 
         m_isDroneInGameAndConnected[index] = (dronestate & (0b10000000)) > 0;
         m_isDroneInCollision[index] = (dronestate & (0b01000000)) > 0;
