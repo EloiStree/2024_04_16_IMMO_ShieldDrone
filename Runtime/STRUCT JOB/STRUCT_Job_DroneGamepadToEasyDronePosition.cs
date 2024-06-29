@@ -18,7 +18,7 @@ public struct STRUCT_Job_DroneGamepadToEasyDronePosition : IJobParallelFor
 
     public void Execute(int index)
     {
-        int maxDistance = 0b111111111111111111;
+        float maxDistance = 0b111111111111111111 *0.001f;
         byte byteTYpe = 0;
 
         //0 Default easy drone
