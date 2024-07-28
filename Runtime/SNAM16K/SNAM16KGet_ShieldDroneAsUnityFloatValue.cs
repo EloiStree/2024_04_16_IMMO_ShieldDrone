@@ -1,4 +1,4 @@
-﻿public class SNAM16KGet_ShieldDroneAsUnityFloatValue : StaticNativeArrayMono_GetDebugGeneric16K<STRUCT_ShieldDroneAsUnity>
+﻿public class SNAM16KGet_ShieldDroneAsUnityFloatValue : SNAM_GetDebugGeneric16K<STRUCT_ShieldDroneAsUnity>
 {
 
 }

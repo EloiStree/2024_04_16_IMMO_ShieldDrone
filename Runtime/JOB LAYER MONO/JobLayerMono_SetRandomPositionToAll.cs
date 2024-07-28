@@ -21,7 +21,7 @@ using UnityEngine;
 
 public class JobLayerMono_SetRandomPositionToAll : MonoBehaviour
 {
-    public SNAM16K_UpdateRandomSeed m_randomSeed;
+    public SNAM_Generic16K<uint> m_randomSeed;
     public SNAM16K_EasyDronePositionState m_easyDrone;
     public float m_cubeRange = 10;
     public IEnumerator Start()

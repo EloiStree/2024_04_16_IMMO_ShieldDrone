@@ -1,4 +1,4 @@
-﻿public class SNAM16K_ObjectChar : DroneIMMO.StaticNativeArrayMono_Generic16K<char> { }
+﻿public class SNAM16K_ObjectChar : SNAM_Generic16K<char> { }
 
 
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class SNAM16KSet_ShieldDroneAsUnityFloatValue : StaticNativeArrayMono_SetDebugGeneric16K<STRUCT_ShieldDroneAsUnity>
+public class SNAM16KSet_ShieldDroneAsUnityFloatValue : SNAM_SetDebugGeneric16K<STRUCT_ShieldDroneAsUnity>
 {
     public override STRUCT_ShieldDroneAsUnity GenerateRandomValue()
     {

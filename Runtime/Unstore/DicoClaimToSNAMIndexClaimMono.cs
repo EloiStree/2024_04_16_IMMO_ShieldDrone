@@ -9,7 +9,7 @@ using System;
 public class DicoClaimToSNAMIndexClaimMono : MonoBehaviour
 {
     public SNAM16K_IntegerPlayerIndexClaim m_affectedClaim;
-    public SNAM16K_ObjectInteger m_affectedValue;
+    public SNAM16K_ObjectInt m_affectedValue;
 
     //
     //public NativeMultiHashMap<int, int> m_hashIntegerIndexToIndex = new NativeMultiHashMap<int, int>(capacity, Allocator.TempJob);

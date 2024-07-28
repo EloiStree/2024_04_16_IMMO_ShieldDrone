@@ -1,1 +1,1 @@
-﻿public class SNAM16K_ShieldDroneAs9Float16K : DroneIMMO.StaticNativeArrayMono_Generic16K<ShieldDroneAs9Float> { }
+﻿public class SNAM16K_ShieldDroneAs9Float16K : SNAM_Generic16K<ShieldDroneAs9Float> { }

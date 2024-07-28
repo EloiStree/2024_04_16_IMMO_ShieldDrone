@@ -14,8 +14,8 @@ public class JobLayerMono_SetRandomIntegerInput : MonoBehaviour
 
     public WatchAndDateTimeActionResult m_takenTime;
     public SNAM16K_IntegerPlayerIndexClaim m_indexClaim;
-    public SNAM16K_IntegerUserValue m_userValue;
-    public SNAM16K_UpdateRandomSeed m_seeds;
+    public SNAM_Generic16K<int> m_userValue;
+    public SNAM_Generic16K<uint> m_seeds;
     public bool m_useFromTo=true;
     public int m_from= 1000;
     public int m_to= IMMO16K.ARRAY_MAX_SIZE;

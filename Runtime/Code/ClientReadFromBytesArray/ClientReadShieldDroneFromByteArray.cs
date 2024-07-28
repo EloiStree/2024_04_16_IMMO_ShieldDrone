@@ -13,8 +13,8 @@ public class ClientReadShieldDroneFromByteArray : MonoBehaviour
     public BigByteNativeArrayCompressedDrone16KMono m_outputBigByteArray;
     public SNAM16K_ShieldDroneCompressedAsBits m_outputDroneBits;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_outputDroneUnity;
-    public SNAM16K_ObjectBoolean m_outputIsInGame;
-    public SNAM16K_ObjectBoolean m_outputIsInCollision;
+    public SNAM16K_ObjectBool m_outputIsInGame;
+    public SNAM16K_ObjectBool m_outputIsInCollision;
 
 
     public WatchAndDateTimeActionResult m_bytesToStructJob;
@@ -40,9 +40,9 @@ public class ClientReadShieldDroneFromByteArray : MonoBehaviour
 
     private void TurnBitsDroneStructToUnityDrone()
     {
-        m_bitsToUnityJob.WatchTheAction(() =>
+        m_bitsToUnityJob.WatchTheAction((System.Action)(() =>
         {
-            STRUCT_Job_TurnDoneBitsIntoDroneUnity job = new STRUCT_Job_TurnDoneBitsIntoDroneUnity()
+            STRUCT_Job_TurnDroneBitsIntoDroneUnity job = new global::STRUCT_Job_TurnDroneBitsIntoDroneUnity()
             {
                 m_bigByteCompressed = m_outputBigByteArray.GetBytesNativeArray(),
                 m_shieldDroneAsBits = m_outputDroneBits.GetNativeArray(),
@@ -52,6 +52,6 @@ public class ClientReadShieldDroneFromByteArray : MonoBehaviour
             };
             JobHandle jobHandle = job.Schedule(IMMO16K.ARRAY_MAX_SIZE, 64);
             jobHandle.Complete();
-        });
+        }));
     }
 }

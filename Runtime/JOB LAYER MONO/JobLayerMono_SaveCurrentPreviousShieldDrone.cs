@@ -6,7 +6,7 @@ public class JobLayerMono_SaveCurrentPreviousShieldDrone : MonoBehaviour
 
     public SNAM16K_ShieldDroneAsUnityFloatValue m_currentPosition;
     public SNAM16K_ShieldDroneAsUnityFloatValue m_previousPosition;
-    public SNAM16K_ObjectBoolean m_indexUsed;
+    public SNAM16K_ObjectBool m_indexUsed;
     public bool m_allowSamePosition;
 
     public bool m_useUpdate;

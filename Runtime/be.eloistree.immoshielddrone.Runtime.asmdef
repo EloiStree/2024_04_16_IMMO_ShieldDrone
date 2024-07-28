@@ -6,7 +6,8 @@
         "Unity.Burst.CodeGen",
         "be.eloistree.generaltoolbox",
         "Unity.Mathematics",
-        "be.eloistree.watchexecutetim"
+        "be.eloistree.immogeneric16k",
+        "be.eloistree.watchexecutetime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -7,25 +7,26 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SplitAndPushBytesAsFrameMono : MonoBehaviour
+public class HelloSplitAndPushBytesAsFrameMono : MonoBehaviour
 {
 
     public UnityEvent<byte[]> m_onByteChunkPush;
 
+    public UnityEvent<string , byte[]> m_onNamedByteChunkPush;
+
     public BigByteArrayCompressedDrone16KMono m_source;
 
+    public byte m_arrayUniqueIdInProject=1;
     public int m_droneSendMultipleOf2 = 32;
 
-
+    public string m_arrayName="DroneByteArray";
 
 
 
     [Header("Don't touch")]
-
-
-    public int m_elementByteSize = 11;
-    public int m_droneSendPerChunk = 32 * 32;
-    public int m_chunkStartByteSize = 4 + 4 + 4 + 4 + 8 + 8+8;
+    int m_elementByteSize = 11;
+    int m_droneSendPerChunk = 32 * 32;
+    int m_chunkStartByteSize =1 + 4 + 4 + 4 + 4 + 8 + 8+8;
     public int m_bytePerChunkWithoutStart;
     public int m_bytePerChunkWithStart;
 
@@ -115,19 +116,21 @@ public class SplitAndPushBytesAsFrameMono : MonoBehaviour
                 m_chunkSent.Add(new ChunkOfByte( m_bytePerChunkWithStart));
 
             byte[] inProcessChunk = m_chunkSent[i].m_lastChunkSent ;
-            BitConverter.GetBytes(m_frameIndex).CopyTo(inProcessChunk, 0);
-            BitConverter.GetBytes(m_chunkIndex).CopyTo(inProcessChunk, 4);
-            BitConverter.GetBytes(copyOffset).CopyTo(inProcessChunk, 8);
-            BitConverter.GetBytes(copyLength ).CopyTo(inProcessChunk, 12);
-            BitConverter.GetBytes(m_startBuildingFrameTimestamp>0? m_startBuildingFrameTimestamp: m_sendTimestampBlock).CopyTo(inProcessChunk, 16);
-            BitConverter.GetBytes(m_sendTimestampBlock ).CopyTo(inProcessChunk, 24);
-            BitConverter.GetBytes(m_sendTimestampChunk).CopyTo(inProcessChunk, 32);
-            Buffer.BlockCopy(source, copyOffset, inProcessChunk, 40, m_bytePerChunkWithoutStart);
+            inProcessChunk[0] = m_arrayUniqueIdInProject;
+            BitConverter.GetBytes(m_frameIndex).CopyTo(inProcessChunk, 1);
+            BitConverter.GetBytes(m_chunkIndex).CopyTo(inProcessChunk, 5);
+            BitConverter.GetBytes(copyOffset).CopyTo(inProcessChunk, 9);
+            BitConverter.GetBytes(copyLength ).CopyTo(inProcessChunk, 13);
+            BitConverter.GetBytes(m_startBuildingFrameTimestamp>0? m_startBuildingFrameTimestamp: m_sendTimestampBlock).CopyTo(inProcessChunk, 17);
+            BitConverter.GetBytes(m_sendTimestampBlock ).CopyTo(inProcessChunk, 25);
+            BitConverter.GetBytes(m_sendTimestampChunk).CopyTo(inProcessChunk, 33);
+            Buffer.BlockCopy(source, copyOffset, inProcessChunk, 41, m_bytePerChunkWithoutStart);
 
 
             m_onByteChunkPush.Invoke(inProcessChunk);
-            
-           
+            m_onNamedByteChunkPush.Invoke(m_arrayName, inProcessChunk);
+
+
             m_pushed = inProcessChunk;
             m_pushChunk.StopCounting();
             m_chunkIndex++;
